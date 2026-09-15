@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useIsDesktop } from '../hooks/useIsDesktop'
 
 const NAV_LINKS = [
   { href: '#galeria', label: 'Galería' },
@@ -8,8 +9,8 @@ const NAV_LINKS = [
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
-  const [isDesktop, setIsDesktop] = useState(() => window.matchMedia('(min-width: 768px)').matches)
   const [menuOpen, setMenuOpen] = useState(false)
+  const isDesktop = useIsDesktop()
 
   useEffect(() => {
     const onScroll = () => {
@@ -19,14 +20,6 @@ export function Navbar() {
     window.addEventListener('scroll', onScroll, { passive: true })
     onScroll()
     return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
-  useEffect(() => {
-    const query = window.matchMedia('(min-width: 768px)')
-    const onChange = () => setIsDesktop(query.matches)
-    onChange()
-    query.addEventListener('change', onChange)
-    return () => query.removeEventListener('change', onChange)
   }, [])
 
   const collapsed = isScrolled || !isDesktop

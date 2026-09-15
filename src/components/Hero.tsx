@@ -1,11 +1,15 @@
+import { useIsDesktop } from '../hooks/useIsDesktop'
+
 export function Hero() {
+  const isDesktop = useIsDesktop()
+
   return (
     <section
       id="historia"
       className="relative flex min-h-[100dvh] items-end overflow-hidden bg-brand-ink text-white"
     >
       <img
-        src="/image.png_20260915165725.jpeg"
+        src={isDesktop ? '/image.png_20260915165725.jpeg' : '/Movil/01.jpeg'}
         alt=""
         className="absolute inset-0 h-full w-full object-cover opacity-60"
       />
