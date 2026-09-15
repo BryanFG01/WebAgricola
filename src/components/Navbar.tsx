@@ -28,7 +28,7 @@ export function Navbar() {
     <header className="animate-navbar-in fixed inset-x-0 top-0 z-50 px-4 pt-4">
       <div className="relative mx-auto w-full max-w-6xl">
         <div
-          className={`mx-auto flex items-center overflow-hidden rounded-full bg-[#a89b8a]/45 text-white shadow-lg backdrop-blur-md backdrop-saturate-150 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          className={`mx-auto flex items-center overflow-hidden rounded-full bg-[#a89b8a]/85 text-white shadow-lg transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] md:bg-[#a89b8a]/45 md:backdrop-blur-md md:backdrop-saturate-150 ${
             collapsed ? 'h-14 w-14 justify-center px-0 py-0' : 'w-full justify-between px-6 py-3'
           }`}
         >
