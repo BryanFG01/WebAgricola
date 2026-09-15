@@ -19,8 +19,8 @@ export function Gallery() {
         const isLast = index === items.length - 1
         return (
           <div key={item.id} className="relative h-[150dvh]" style={{ zIndex: index + 1 }}>
-            <div className="sticky top-0 flex h-dvh items-end overflow-hidden">
-              <div className="absolute inset-0" style={isLast ? { clipPath: 'url(#footer-wave)' } : undefined}>
+            <div className="sticky top-0 flex h-dvh items-end">
+              <div className="absolute inset-0 overflow-hidden" style={isLast ? { clipPath: 'url(#footer-wave)' } : undefined}>
                 <img src={item.src} alt={item.alt} className="h-full w-full object-cover" loading="lazy" />
                 <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/60 to-transparent" />
               </div>
