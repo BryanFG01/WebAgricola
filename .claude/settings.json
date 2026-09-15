@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find / -maxdepth 1 -name \"*.png\" 2>/dev/null; ls -la \"/c/Users/pcc/Desktop/Agricola/public\"; find \"/c/Users/pcc/Desktop\" -iname \"image*.png\" 2>/dev/null; find \"/c/Users/pcc/Desktop\" -iname \"pngtree*\" 2>/dev/null)",
+      "Read(//c//**)",
+      "Bash(npm ls *)",
+      "Bash(node -e \"require.resolve\\('playwright'\\)\")",
+      "Bash(npx --yes playwright install --dry-run chromium)",
+      "Bash(node \"C:\\\\Users\\\\pcc\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-pcc-Desktop-Agricola\\\\873490d8-e2a9-4a92-a6b2-adf72d9eff39\\\\scratchpad\\\\screenshot.mjs\")",
+      "Bash(node \"C:\\\\Users\\\\pcc\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-pcc-Desktop-Agricola\\\\873490d8-e2a9-4a92-a6b2-adf72d9eff39\\\\scratchpad\\\\screenshot2.mjs\")"
+    ]
+  }
+}
