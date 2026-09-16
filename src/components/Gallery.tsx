@@ -1,5 +1,28 @@
 import { galleryItems, mobileGalleryItems } from '../data/gallery'
+import type { GalleryItem } from '../data/gallery'
 import { useIsDesktop } from '../hooks/useIsDesktop'
+
+function SlideContent({ item, index, total, clipStyle }: { item: GalleryItem; index: number; total: number; clipStyle?: React.CSSProperties }) {
+  return (
+    <>
+      <div className="absolute inset-0 overflow-hidden" style={clipStyle}>
+        <img src={item.src} alt={item.alt} className="h-full w-full object-cover" loading="lazy" />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/60 to-transparent" />
+      </div>
+      <div className="relative mx-auto w-full max-w-6xl px-6 pb-16">
+        <span className="text-sm font-semibold uppercase tracking-widest text-brand-orange">
+          {String(index + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
+        </span>
+        <a
+          href="#contacto"
+          className="mt-3 inline-block rounded-full border border-white px-6 py-2 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-white hover:text-brand-ink"
+        >
+          Ver más
+        </a>
+      </div>
+    </>
+  )
+}
 
 export function Gallery() {
   const isDesktop = useIsDesktop()
@@ -17,24 +40,20 @@ export function Gallery() {
 
       {items.map((item, index) => {
         const isLast = index === items.length - 1
+        const clipStyle = isLast ? { clipPath: 'url(#footer-wave)' } : undefined
+
+        if (!isDesktop) {
+          return (
+            <div key={item.id} className="relative flex h-dvh items-end">
+              <SlideContent item={item} index={index} total={items.length} clipStyle={clipStyle} />
+            </div>
+          )
+        }
+
         return (
           <div key={item.id} className="relative h-[150dvh]" style={{ zIndex: index + 1 }}>
             <div className="sticky top-0 flex h-dvh items-end">
-              <div className="absolute inset-0 overflow-hidden" style={isLast ? { clipPath: 'url(#footer-wave)' } : undefined}>
-                <img src={item.src} alt={item.alt} className="h-full w-full object-cover" loading="lazy" />
-                <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/60 to-transparent" />
-              </div>
-              <div className="relative mx-auto w-full max-w-6xl px-6 pb-16">
-                <span className="text-sm font-semibold uppercase tracking-widest text-brand-orange">
-                  {String(index + 1).padStart(2, '0')} / {String(items.length).padStart(2, '0')}
-                </span>
-                <a
-                  href="#contacto"
-                  className="mt-3 inline-block rounded-full border border-white px-6 py-2 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-white hover:text-brand-ink"
-                >
-                  Ver más
-                </a>
-              </div>
+              <SlideContent item={item} index={index} total={items.length} clipStyle={clipStyle} />
             </div>
           </div>
         )
