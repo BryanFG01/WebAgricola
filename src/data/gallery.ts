@@ -23,14 +23,14 @@ export const mobileGalleryItems: GalleryItem[] = [
   //   src: '/Movil/01.jpeg',
   //   alt: 'Huevos campesinos de alta calidad, del campo a tu mesa',
   // },
-  {
-    id: 'movil-02',
-    src: '/Movil/02.jpeg',
-    alt: 'Huevos campesinos de alta calidad, del campo a tu mesa',
-  },
-  {
-    id: 'movil-03',
-    src: '/Movil/03.jpeg',
-    alt: 'Pollo de campo de alta calidad, del campo a tu mesa',
-  },
+  // {
+  //   id: 'movil-02',
+  //   src: '/Movil/02.jpeg',
+  //   alt: 'Huevos campesinos de alta calidad, del campo a tu mesa',
+  // },
+  // {
+  //   id: 'movil-03',
+  //   src: '/Movil/03.jpeg',
+  //   alt: 'Pollo de campo de alta calidad, del campo a tu mesa',
+  // },
 ]
