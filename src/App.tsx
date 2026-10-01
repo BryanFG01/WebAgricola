@@ -1,3 +1,4 @@
+import { EggScrollStory } from './components/EggScrollStory'
 import { Footer } from './components/Footer'
 import { Gallery } from './components/Gallery'
 import { Hero } from './components/Hero'
@@ -9,6 +10,7 @@ function App() {
     <div id="top">
       <Navbar />
       <Hero />
+      <EggScrollStory />
       <Gallery />
       <Footer />
       <WhatsAppEggButton />

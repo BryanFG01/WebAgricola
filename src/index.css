@@ -2,6 +2,7 @@
 
 @theme {
   --font-sans: 'Segoe UI', system-ui, Roboto, sans-serif;
+  --font-display: 'Oswald', 'Arial Narrow', sans-serif;
   --color-brand-cream: #fdf8f2;
   --color-brand-orange: #e8622c;
   --color-brand-orange-dark: #c74f21;
