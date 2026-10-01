@@ -75,19 +75,14 @@ export function VideoScrollStory() {
   const activeStep = Math.min(STEPS.length - 1, Math.floor(progress * STEPS.length))
 
   return (
-    <section ref={sectionRef} id="proceso" className="relative h-[500dvh] bg-brand-ink">
-      {/* Separador en onda con el Hero; se va con el scroll y no tapa el video fijo */}
-      <svg
-        viewBox="0 0 1440 120"
-        preserveAspectRatio="none"
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 z-20 h-[clamp(48px,8vw,120px)] w-full"
-      >
-        <path
-          d="M0 0H1440V30C1300 70 1160 82 1000 58C840 34 740 4 580 12C420 20 300 74 160 76C90 77 40 64 0 50Z"
-          className="fill-brand-ink"
-        />
-      </svg>
+    <section
+      ref={sectionRef}
+      id="proceso"
+      // Sube como una tarjeta y se monta sobre el Hero, que queda fijo debajo
+      className="relative z-10 h-[500dvh] overflow-clip rounded-t-[10px] bg-brand-ink md:rounded-t-xl"
+    >
+      {/* Borde superior difuminado: se funde con el Hero y se va con el scroll */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-20 h-40 bg-gradient-to-b from-black/45 via-black/15 to-transparent md:h-56" />
       <div className="sticky top-0 h-[100dvh] overflow-hidden bg-brand-ink">
         {/* Video a pantalla completa */}
         <div className="absolute inset-0">

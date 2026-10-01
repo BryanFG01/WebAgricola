@@ -1,12 +1,34 @@
+import { useEffect, useState } from 'react'
 import { useIsDesktop } from '../hooks/useIsDesktop'
 
 export function Hero() {
   const isDesktop = useIsDesktop()
+  // Cuánto ha subido el video por encima del Hero (0 → 1)
+  const [covered, setCovered] = useState(0)
+
+  useEffect(() => {
+    let raf = 0
+    const update = () => {
+      raf = 0
+      setCovered(Math.min(1, window.scrollY / window.innerHeight))
+    }
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update)
+    }
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      cancelAnimationFrame(raf)
+      window.removeEventListener('scroll', onScroll)
+    }
+  }, [])
 
   return (
     <section
       id="historia"
-      className="relative flex min-h-[100dvh] items-end overflow-hidden bg-brand-ink text-white"
+      className="sticky top-0 flex h-[100dvh] items-end overflow-hidden bg-brand-ink text-white will-change-transform"
+      // Parallax: sube más lento que el video que lo cubre; nunca deja ver bordes
+      style={{ transform: `translate3d(0, ${-covered * 18}vh, 0)` }}
     >
       <img
         src={isDesktop ? '/image.png_20260915165725.jpeg' : '/Movil/01.jpeg'}
@@ -26,6 +48,8 @@ export function Hero() {
           animal y alianzas sólidas con el productor campesino.
         </p>
       </div>
+      {/* Se oscurece suavemente mientras el video lo cubre */}
+      <div className="pointer-events-none absolute inset-0 bg-black" style={{ opacity: covered * 0.45 }} />
     </section>
   )
 }
