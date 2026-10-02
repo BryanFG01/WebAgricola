@@ -79,11 +79,11 @@ export function VideoScrollStory() {
       ref={sectionRef}
       id="proceso"
       // Sube como una tarjeta y se monta sobre el Hero, que queda fijo debajo
-      className="relative z-10 h-[500dvh] overflow-clip rounded-t-[10px] bg-brand-ink md:rounded-t-xl"
+      className="relative z-10 h-[500lvh] rounded-t-[10px] bg-brand-ink md:rounded-t-xl"
     >
       {/* Borde superior difuminado: se funde con el Hero y se va con el scroll */}
       <div className="pointer-events-none absolute inset-x-0 top-0 z-20 h-40 bg-gradient-to-b from-black/45 via-black/15 to-transparent md:h-56" />
-      <div className="sticky top-0 h-[100dvh] overflow-hidden bg-brand-ink">
+      <div className="sticky top-0 h-[100lvh] overflow-hidden rounded-t-[10px] bg-brand-ink md:rounded-t-xl">
         {/* Video a pantalla completa */}
         <div className="absolute inset-0">
           <video
@@ -104,7 +104,8 @@ export function VideoScrollStory() {
         <div className="absolute inset-x-0 bottom-0 z-10 h-2/3 bg-gradient-to-t from-brand-ink/85 via-brand-ink/40 to-transparent md:inset-y-0 md:left-0 md:h-auto md:w-3/5 md:bg-gradient-to-r md:from-brand-ink/80 md:via-brand-ink/35" />
 
         {/* Textos: cada paso entra línea por línea y se acomoda */}
-        <div className="relative z-10 mx-auto flex h-full w-full max-w-6xl items-end px-6 pb-14 md:items-center md:pb-0">
+        {/* svh: los textos quedan siempre en la zona visible, aunque la barra del navegador esté abierta */}
+        <div className="relative z-10 mx-auto flex h-[100svh] w-full max-w-6xl items-end px-6 pb-14 md:items-center md:pb-0">
           <div className="grid font-display leading-[0.95] text-white uppercase [text-shadow:0_3px_18px_rgb(0_0_0/0.4)]">
             {STEPS.map((step, i) => {
               const state = i === activeStep ? 'in' : i < activeStep ? 'past' : 'next'

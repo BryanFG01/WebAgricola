@@ -26,9 +26,9 @@ export function Hero() {
   return (
     <section
       id="historia"
-      className="sticky top-0 flex h-[100dvh] items-end overflow-hidden bg-brand-ink text-white will-change-transform"
-      // Parallax: sube más lento que el video que lo cubre; nunca deja ver bordes
-      style={{ transform: `translate3d(0, ${-covered * 18}vh, 0)` }}
+      className="sticky top-0 flex h-[100lvh] items-end overflow-hidden pb-[calc(100lvh-100svh)] bg-brand-ink text-white md:will-change-transform"
+      // Parallax solo en escritorio: en móvil un elemento fijo que se mueve con el scroll tiembla
+      style={isDesktop ? { transform: `translate3d(0, ${-covered * 18}vh, 0)` } : undefined}
     >
       <img
         src={isDesktop ? '/image.png_20260915165725.jpeg' : '/Movil/01.jpeg'}
